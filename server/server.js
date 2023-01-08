@@ -26,6 +26,20 @@ app.get('/citiesName', function (req, res) {
  res.send(arrayOfCities)
 });
 
+
+app.get('/:city', function (req, res) {
+  const arrayOfCities = Object.keys(combinedData);
+  const city=req.params.city;
+  if (arrayOfCities.indexOf(city) < 0) {
+    res.sendStatus(400);
+    return;
+  }
+  const arrayAvaliablePlacesOfCity=Object.keys(combinedData[city])
+   res.send(arrayAvaliablePlacesOfCity)
+});
+
+
+
 app.get("/:city/:category", function (req, res) {
   const city = req.params.city;
   const category = req.params.category;
@@ -43,6 +57,10 @@ app.get("/:city/:category", function (req, res) {
 
   res.send(combinedData[city][category]);
 });
+
+
+
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

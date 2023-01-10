@@ -6,11 +6,11 @@ const fs = require("fs"); //file system Library
 app.use(bodyParser.json());
 app.use(cors());
 
-// var corsOptions = {
-//   origin: "http://localhost:3000"
-// };
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 const harrow = require("./data/Harrow.json");
 const heathrow = require("./data/Heathrow.json");

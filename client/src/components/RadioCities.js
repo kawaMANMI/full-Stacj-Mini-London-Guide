@@ -12,7 +12,7 @@ export default function RadioCities() {
   useEffect(() => {
     async function fetchMyAPI1() {
       let response = await fetch(
-        "https://mini-london-guide-fullstack-challange.onrender.com/citiesName"
+        "cd"
       );
       response = await response.json();
       setCitiesList(response);

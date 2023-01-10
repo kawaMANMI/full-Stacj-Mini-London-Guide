@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { RadioGroup, RadioButton } from "react-radio-buttons";
-import "../App.css";
 
+import "../App.css";
+// This component is for getting list of categories(places) in the selected city
 export default function Category(props) {
   const [categoryCity, setCategoryCity] = useState([]);
 
   useEffect(() => {
     if (props.selectCity === "Select City") return;
-    async function fetchMyAPI2() {
+    async function fetchMyAPI() {
       let response = await fetch(
         `https://mini-london-guide-fullstack-challange.onrender.com/${props.selectCity}`
       );
@@ -15,23 +15,17 @@ export default function Category(props) {
       setCategoryCity(response);
     }
 
-    fetchMyAPI2().catch(console.error);
+    fetchMyAPI().catch(console.error);
   }, [props.selectCity]);
   return (
     <div
       className="btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
+      onChange={(e) => props.setSelectedCategory(e.target.value)}
     >
       {categoryCity.map((elmCategory, index) => (
         <div key={index}>
-          <label
-            className="btn btn-outline-primary"
-            htmlFor={index}
-            key={index + 1000}
-          >
-            {elmCategory}
-          </label>
           <input
             type="radio"
             className="btn-check"
@@ -40,30 +34,21 @@ export default function Category(props) {
             key={index + 2000}
             value={elmCategory}
           />
+          <label
+            className="btn btn-outline-primary"
+            htmlFor={index}
+            key={index + 1000}
+          >
+            {elmCategory}
+          </label>
         </div>
       ))}
     </div>
   );
 }
 
-// // //Component for all existed categories in the selected city
-// //   const Category = () => {
-// //     return (
-// // <div className="btn-group" role="group" aria-label="Basic radio toggle button group" >
-// // {categoryCity.map( (elmCategory, index)=>(
-// //   <>
-// //     <label className="btn btn-outline-primary" htmlFor={index} key={index}>{elmCategory}</label>
-// //   <input type="radio" className="btn-check" name="categoryCity" id={index}  key={elmCategory} value={elmCategory} onChange={ (e)=> setselectedCategory(e.target.value)} />
-// //   </>
-// // ))}
-
-// // </div>
-// //     );
-// //   };
-
 //   //component for Crads for selected catgories
 //   //  const CardSelectedCategory=()=>{
-
 
 //     setCategoryList( combinedData[selectCity][selectedCategory])
 

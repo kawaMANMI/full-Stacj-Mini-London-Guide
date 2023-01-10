@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { DropdownButton } from "react-bootstrap";
 import Category from "./Category";
+import Cards from "./Cards";
 import "../App.css";
 
 export default function RadioCities() {
   const [citiesList, setCitiesList] = useState([]);
   const [selectCity, setSelectCity] = useState("Select City");
-
+  const [selectedCategory, setSelectedCategory] = useState("");
   useEffect(() => {
     async function fetchMyAPI1() {
       let response = await fetch(
@@ -39,7 +40,15 @@ export default function RadioCities() {
           </Dropdown.Item>
         ))}
       </DropdownButton>
-      {selectCity !== "Select City"  ? <Category selectCity ={selectCity}/> : null}
+      {selectCity !== "Select City" ? (
+        <Category
+          selectCity={selectCity}
+          setSelectedCategory={setSelectedCategory}
+        />
+      ) : null}
+      {selectedCategory ? (
+        <Cards selectCity={selectCity} selectedCategory={selectedCategory} />
+      ) : null}
     </>
   );
 }

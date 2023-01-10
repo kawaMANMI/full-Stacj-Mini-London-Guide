@@ -31,11 +31,10 @@
 .btn-group {
   margin-top: 1cm;
   margin-bottom: 1cm;
-  border: 2px solid red;
 }
 
-.card {
-  border: 2px solid red;
+.btn-container {
+  margin: .2em;
 }
 
 @keyframes App-logo-spin {

@@ -19,16 +19,17 @@ export default function Category(props) {
   }, [props.selectCity]);
   return (
     <div
-      className="btn-group"
+      className="btn-group mr-2"
       role="group"
       aria-label="Basic radio toggle button group"
       onChange={(e) => props.setSelectedCategory(e.target.value)}
     >
+      {/* <h5>Categories: </h5> */}
       {categoryCity.map((elmCategory, index) => (
-        <div key={index}>
+        <div key={index} className="btn-container">
           <input
             type="radio"
-            className="btn-check"
+            className="btn-check "
             name="categoryCity"
             id={index}
             key={index + 2000}

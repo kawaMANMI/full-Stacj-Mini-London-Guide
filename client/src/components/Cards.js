@@ -25,7 +25,7 @@ export default function Cards(props) {
           {categoryList.map((catElm, index) => (
             <div className="col-md-4 gx-10" key={index + 1000}>
               <div
-                className="card shadow p-3 mb-5 bg-white border border-4  rounded-top"
+                className="card shadow p-3 mb-5 bg-white border border-5  rounded"
                 key={index + 2000}
               >
                 <div className="card-body" key={index + 3000}>
